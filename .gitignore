@@ -1,4 +1,6 @@
 coverage
 vendor
+www
 *.cache
+*.db
 .DS_Store
