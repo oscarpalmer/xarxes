@@ -18,9 +18,7 @@ final class ManagerTest extends TestCase
 
 		try {
 			new Manager('x', 'y');
-		}
-		catch (Throwable $exception)
-		{
+		} catch (Throwable $exception) {
 			$this->assertInstanceOf(LogicException::class, $exception);
 		}
 	}

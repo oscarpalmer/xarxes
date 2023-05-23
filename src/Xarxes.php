@@ -6,7 +6,7 @@ namespace oscarpalmer\Xarxes;
 
 final class Xarxes
 {
-	public const VERSION = '0.2.0';
+	public const VERSION = '0.3.0';
 
 	/**
 	 * @param array<mixed, mixed> $options

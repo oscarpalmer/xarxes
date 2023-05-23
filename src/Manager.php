@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace oscarpalmer\Xarxes;
 
 use LogicException;
+use oscarpalmer\Xarxes\Action\Query;
+use oscarpalmer\Xarxes\Action\Select;
 use PDO;
 
 final class Manager
@@ -31,5 +33,15 @@ final class Manager
 	public function getPdo(): PDO
 	{
 		return $this->pdo;
+	}
+
+	public function query(string $query): Query
+	{
+		return new Query($this, $query);
+	}
+
+	public function select(array|string $columns): Select
+	{
+		return new Select($this, $columns);
 	}
 }

@@ -19,14 +19,10 @@ final class XarxesTest extends TestCase
 
 		foreach (['mysql', 'postgresql'] as $method) {
 			try {
-				call_user_func(sprintf('oscarpalmer\\Xarxes\\Xarxes::%s',$method), './test.db');
-			}
-			catch (PDOException $exception)
-			{
+				call_user_func(sprintf('oscarpalmer\\Xarxes\\Xarxes::%s', $method), './test.db');
+			} catch (PDOException $exception) {
 				// Expected
-			}
-			catch (Exception $exception)
-			{
+			} catch (Exception $exception) {
 				$this->assertInstanceOf(LogicException::class, $exception);
 			}
 		}
