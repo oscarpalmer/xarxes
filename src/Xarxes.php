@@ -6,7 +6,7 @@ namespace oscarpalmer\Xarxes;
 
 final class Xarxes
 {
-	public const VERSION = '0.3.0';
+	public const VERSION = '0.4.0';
 
 	/**
 	 * @param array<mixed, mixed> $options
@@ -17,7 +17,7 @@ final class Xarxes
 		?string $password = null,
 		?array $options = null,
 	): Manager {
-		return new Manager('mysql', $database, $username, $password, $options);
+		return new Manager(Driver::Mysql, $database, $username, $password, $options);
 	}
 
 	/**
@@ -29,7 +29,7 @@ final class Xarxes
 		?string $password = null,
 		?array $options = null,
 	): Manager {
-		return new Manager('pgsql', $database, $username, $password, $options);
+		return new Manager(Driver::Postgresql, $database, $username, $password, $options);
 	}
 
 	/**
@@ -41,6 +41,6 @@ final class Xarxes
 		?string $password = null,
 		?array $options = null,
 	): Manager {
-		return new Manager('sqlite', $database, $username, $password, $options);
+		return new Manager(Driver::Sqlite, $database, $username, $password, $options);
 	}
 }

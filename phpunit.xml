@@ -4,15 +4,15 @@
 	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
 	bootstrap="tests/bootstrap.php"
 >
-  <coverage/>
-  <testsuites>
-    <testsuite name="Xarxes Test Suite">
-      <directory>tests</directory>
-    </testsuite>
-  </testsuites>
-  <source>
-    <include>
-      <directory suffix=".php">src</directory>
-    </include>
-  </source>
+	<coverage/>
+	<source>
+		<include>
+			<directory suffix=".php">src</directory>
+		</include>
+	</source>
+	<testsuites>
+		<testsuite name="Xarxes Test Suite">
+			<directory>tests</directory>
+		</testsuite>
+	</testsuites>
 </phpunit>

@@ -14,13 +14,23 @@ final class Query extends Runnable
 		parent::__construct($manager);
 	}
 
+	/**
+	 * Get the query to run
+	 */
 	public function getQuery(): string
 	{
 		return $this->query;
 	}
 
+	/**
+	 * Execute the query
+	 */
 	public function run(): PDOStatement
 	{
-		return $this->execute();
+		$prepared = $this->prepare();
+
+		$prepared->execute();
+
+		return $prepared;
 	}
 }

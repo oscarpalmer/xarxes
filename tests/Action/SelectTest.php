@@ -7,6 +7,7 @@ namespace oscarpalmer\Xarxes\Test\Action;
 use InvalidArgumentException;
 use LogicException;
 use oscarpalmer\Xarxes\Manager;
+use oscarpalmer\Xarxes\Xarxes;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 
@@ -16,7 +17,7 @@ final class SelectTest extends TestCase
 
 	public function setUp(): void
 	{
-		$this->manager = new Manager('sqlite', __DIR__ . '/../test.db');
+		$this->manager = Xarxes::sqlite(__DIR__ . '/../test.db');
 	}
 
 	public function testConstructor(): void
@@ -80,8 +81,8 @@ final class SelectTest extends TestCase
 			->run();
 
 		$this->assertIsArray($persons);
-		$this->assertCount(1, $persons);
-		$this->assertSame('Oscar', $persons[0]['name']);
+		$this->assertCount(2, $persons);
+		$this->assertSame('Oscar Palmér', $persons[0]['name']);
 	}
 
 	public function testWhere(): void
@@ -90,7 +91,7 @@ final class SelectTest extends TestCase
 		$array = $this->manager->select('*')->from('a')->where(['x = 1', 'y = 2']);
 
 		$this->assertSame('select * from a where x = 1', $string->getQuery());
-		$this->assertSame('select * from a where x = 1 or y = 2', $array->getQuery());
+		$this->assertSame('select * from a where x = 1 and y = 2', $array->getQuery());
 
 		try {
 			$this->manager->select('*')->from('a')->where([1]);

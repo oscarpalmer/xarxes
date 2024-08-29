@@ -11,12 +11,9 @@ return [
 		NunoMaduro\PhpInsights\Domain\Insights\ForbiddenTraits::class,
 		PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff::class,
 		PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\DisallowTabIndentSniff::class,
+		SlevomatCodingStandard\Sniffs\TypeHints\DisallowMixedTypeHintSniff::class,
 	],
-	'config' => [
-		PhpCsFixer\Fixer\Basic\BracesFixer::class => [
-			'indent' => '	',
-		],
-	],
+	'config' => [],
 	'requirements' => [],
 	'threads' => null,
 ];

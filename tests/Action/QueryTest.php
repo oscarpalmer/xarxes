@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace oscarpalmer\Xarxes\Test\Action;
 
 use oscarpalmer\Xarxes\Manager;
+use oscarpalmer\Xarxes\Xarxes;
 use PHPUnit\Framework\TestCase;
 
 final class QueryTest extends TestCase
@@ -13,7 +14,7 @@ final class QueryTest extends TestCase
 
 	public function setUp(): void
 	{
-		$this->manager = new Manager('sqlite', __DIR__ . '/../test.db');
+		$this->manager = Xarxes::sqlite(__DIR__ . '/../test.db');
 	}
 
 	public function testGetters(): void
@@ -28,7 +29,7 @@ final class QueryTest extends TestCase
 		$statement = $query->run();
 		$persons = $statement->fetchAll();
 
-		$this->assertCount(1, $persons);
-		$this->assertSame('Oscar', $persons[0]['name']);
+		$this->assertCount(2, $persons);
+		$this->assertSame('Oscar Palmér', $persons[0]['name']);
 	}
 }
