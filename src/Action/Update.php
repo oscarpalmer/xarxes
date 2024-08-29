@@ -6,6 +6,9 @@ namespace oscarpalmer\Xarxes\Action;
 
 use oscarpalmer\Xarxes\Manager;
 
+/**
+ * Update rows in a table
+ */
 final class Update extends Runnable
 {
 	use Where;
@@ -35,9 +38,7 @@ final class Update extends Runnable
 	{
 		$prepared = $this->prepare();
 
-		$prepared->execute();
-
-		return $prepared->rowCount();
+		return $prepared->execute() === true ? $prepared->rowCount() : 0;
 	}
 
 	/**

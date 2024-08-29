@@ -8,6 +8,9 @@ use InvalidArgumentException;
 use LogicException;
 use oscarpalmer\Xarxes\Manager;
 
+/**
+ * Select rows from tables
+ */
 final class Select extends Runnable
 {
 	use Where;

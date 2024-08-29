@@ -10,6 +10,7 @@ use oscarpalmer\Xarxes\Action\Delete;
 use oscarpalmer\Xarxes\Action\Insert;
 use oscarpalmer\Xarxes\Action\Query;
 use oscarpalmer\Xarxes\Action\Select;
+use oscarpalmer\Xarxes\Action\Transaction;
 use oscarpalmer\Xarxes\Action\Update;
 use PDO;
 
@@ -83,6 +84,17 @@ final class Manager
 	public function select(array|string $columns): Select
 	{
 		return new Select($this, $columns);
+	}
+
+	/**
+	 * - Begin a transaction with a callback
+	 * - If the callback returns `true`, the transaction will be committed
+	 * - If it returns anything else – or an error is thrown – the transaction will be rolled back
+	 * @param callable $callback
+	 */
+	public function transaction(callable $callback): bool
+	{
+		return (new Transaction($this))->run($callback);
 	}
 
 	/**

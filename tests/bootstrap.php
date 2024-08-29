@@ -14,8 +14,8 @@ foreach (['blah', 'person'] as $table) {
 
 $manager
 	->create('person')
-	->columns([
-		'id integer auto_increment primarykey',
+->columns([
+	'id integer',
 		'name text not null',
 		'age integer not null',
 	])
@@ -23,25 +23,11 @@ $manager
 
 $manager
 	->insert('person')
-	->columns(['id', 'name', 'age'])
-	->values([':id', ':name', ':age'])
-	->parameters([
-		':id' => 1,
-		':name' => 'Oscar',
-		':age' => -1,
-	])
-	->run();
-
-$manager
-	->update('person')
-	->set([
-		'name = :name',
-		'age = :age'
-	])
-	->where('id = :id')
-	->parameters([
-		':id' => 1,
+->columns(['id', 'name', 'age'])
+->values([':id', ':name', ':age'])
+->parameters([
+	':id' => 1,
 		':name' => 'Oscar Palmér',
-		':age' => 31
+	':age' => 32
 	])
 	->run();

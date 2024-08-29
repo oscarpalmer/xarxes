@@ -7,6 +7,9 @@ namespace oscarpalmer\Xarxes\Action;
 use oscarpalmer\Xarxes\Manager;
 use PDOStatement;
 
+/**
+ * Run an SQL query
+ */
 final class Query extends Runnable
 {
 	public function __construct(Manager $manager, private readonly string $query)

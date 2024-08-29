@@ -6,6 +6,9 @@ namespace oscarpalmer\Xarxes\Action;
 
 use oscarpalmer\Xarxes\Manager;
 
+/**
+ * Create a new table
+ */
 final class Create extends Runnable
 {
 	/** @var array<string> */
@@ -42,6 +45,6 @@ final class Create extends Runnable
 	 */
 	public function run(): bool
 	{
-		return $this->prepare()->execute();
+		return $this->prepare()->execute() === true;
 	}
 }

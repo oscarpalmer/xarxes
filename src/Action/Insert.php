@@ -8,6 +8,9 @@ use InvalidArgumentException;
 use LogicException;
 use oscarpalmer\Xarxes\Manager;
 
+/**
+ * Insert rows into a table
+ */
 final class Insert extends Runnable
 {
 	/** @var array<string> */
@@ -64,9 +67,7 @@ final class Insert extends Runnable
 	{
 		$prepared = $this->prepare();
 
-		$prepared->execute();
-
-		return $prepared->rowCount() === 1;
+		return $prepared->execute() === true && $prepared->rowCount() === 1;
 	}
 
 	/**

@@ -6,6 +6,9 @@ namespace oscarpalmer\Xarxes\Action;
 
 use oscarpalmer\Xarxes\Manager;
 
+/**
+ * Delete rows from a table
+ */
 final class Delete extends Runnable
 {
 	use Where;
@@ -30,8 +33,6 @@ final class Delete extends Runnable
 	{
 		$prepared = $this->prepare();
 
-		$prepared->execute();
-
-		return $prepared->rowCount();
+		return $prepared->execute() === true ? $prepared->rowCount() : 0;
 	}
 }
